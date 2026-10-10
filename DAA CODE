@@ -1,0 +1,1007 @@
+WEEK 1
+Problem 1: Finding Complexity using Counter Method
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int count = 0;
+    int i = 1;                
+    count++;
+
+    int s = 1;                
+    count++;
+
+    while (1)
+    {
+        count++;        
+
+        if (s > n)
+            break;
+
+        i++;                  
+        count++;
+
+        s += i;            
+        count++;
+    }
+
+    printf("%d", count);
+
+    return 0;
+}
+
+
+Problem 2: Finding Complexity using Counter method
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int count = 0;
+
+    count++;  
+
+    if (n == 1)
+    {
+        count++;
+    }
+    else
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            count++;  
+
+            for (int j = 1; j <= n; j++)
+            {
+                count++;  
+
+                count++;  
+                count++;  
+
+                break;
+            }
+
+            count++;  
+        }
+
+        count++;  
+    }
+
+    printf("%d", count);
+
+    return 0;
+}
+
+
+Problem 3: Finding Complexity using Counter Method
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int count = 0;
+
+    for (int i = 1; i <= n; ++i)
+    {
+        count++;  
+
+        count++;  
+
+        if (n % i == 0)
+        {
+            count++;  
+        }
+    }
+
+    count++;  
+
+    printf("%d", count);
+
+    return 0;
+}
+
+
+Problem 4: Finding Complexity using Counter Method
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int c = 0;
+
+    int i = n / 2;
+    c++;   // for initialization
+
+    while (1)
+    {
+        c++;   // i < n
+
+        if (i >= n)
+            break;
+
+        int j = 1;
+
+        while (1)
+        {
+            c++;  
+
+            if (j >= n)
+                break;
+
+            int k = 1;
+
+            while (1)
+            {
+                c++;  
+
+                if (k >= n)
+                    break;
+                c++;
+
+                k = k * 2;
+            }
+
+            j = 2 * j;
+        }
+
+        i++;
+    }
+
+    printf("%d", c);
+
+    return 0;
+}
+
+
+Problem 5: Finding Complexity using counter method
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int rev = 0, remainder;
+    int count = 0;
+
+    count++;
+    count++;
+
+    while (n != 0)
+    {
+        count++;
+
+        remainder = n % 10;
+        count++;
+
+        rev = rev * 10 + remainder;
+        count++;
+
+        n /= 10;
+        count++;
+    }
+
+    count++;  
+
+    printf("%d", count);
+
+    return 0;
+}
+
+                                                                                  WEEK 2
+1-G-Coin Problem
+
+
+#include <stdio.h>
+
+int main() {
+    int V;
+    int denominations[] = {1000, 500, 100, 50, 20, 10, 5, 2, 1};
+    int count = 0;
+    int i;
+
+    scanf("%d", &V);
+
+    for (i = 0; i < 9; i++) {
+        count += V / denominations[i];
+        V = V % denominations[i];
+    }
+
+    printf("%d", count);
+
+    return 0;
+}
+
+
+2-G-Cookies Problem
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void *a, const void *b) {
+    return (*(int *)a > *(int *)b) - (*(int *)a < *(int *)b);
+}
+
+int main() {
+    int n, m;
+
+    scanf("%d", &n);
+
+    int g[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &g[i]);
+    }
+
+    scanf("%d", &m);
+
+    int s[m];
+    for (int i = 0; i < m; i++) {
+        scanf("%d", &s[i]);
+    }
+
+    // Sort greed factors and cookie sizes
+    qsort(g, n, sizeof(int), compare);
+    qsort(s, m, sizeof(int), compare);
+
+    int child = 0;
+    int cookie = 0;
+    int content = 0;
+
+    // Assign cookies to children
+    while (child < n && cookie < m) {
+        if (s[cookie] >= g[child]) {
+            content++;
+            child++;
+            cookie++;
+        } else {
+            cookie++;
+        }
+    }
+
+    printf("%d", content);
+
+    return 0;
+}
+
+3-G-Burger Problem
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void *a, const void *b) {
+    return (*(int *)b - *(int *)a);
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    qsort(a, n, sizeof(int), compare);
+
+    long long sum = 0;
+    long long power = 1;
+
+    for (int i = 0; i < n; i++) {
+        sum += a[i] * power;
+        power *= n;
+    }
+
+    printf("%lld", sum);
+
+    return 0;
+}
+
+4-G-Array Sum max problem
+
+
+#include <stdio.h>
+
+int main() {
+    int n, a[1000], temp;
+    long long sum = 0;
+
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    // Sort in ascending order
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[i] > a[j]) {
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+
+    // Calculate maximum sum
+    for (int i = 0; i < n; i++) {
+        sum += (long long)a[i] * i;
+    }
+
+    printf("%lld", sum);
+
+    return 0;
+}
+
+
+5-G-Product of Array elements-Minimum
+
+
+#include <stdio.h>
+
+int main() {
+    int n, a[100], b[100], temp;
+    int sum = 0;
+
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    for (int i = 0; i < n; i++)
+        scanf("%d", &b[i]);
+
+    // Sort A in ascending order
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[i] > a[j]) {
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+
+    // Sort B in descending order
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (b[i] < b[j]) {
+                temp = b[i];
+                b[i] = b[j];
+                b[j] = temp;
+            }
+        }
+    }
+
+    // Calculate minimum sum
+    for (int i = 0; i < n; i++)
+        sum += a[i] * b[i];
+
+    printf("%d", sum);
+
+    return 0;
+}
+
+                                                                               WEEK 3
+1-Number of Zeros in a Given Array
+
+
+#include <stdio.h>
+
+int countZeroes(int a[], int low, int high) {
+    if (low > high)
+        return 0;
+
+    int mid = (low + high) / 2;
+
+    // If mid is 0, count this and all elements after it
+    if (a[mid] == 0) {
+        return (high - mid + 1) + countZeroes(a, low, mid - 1);
+    }
+
+    // If mid is 1, search in the right half
+    return countZeroes(a, mid + 1, high);
+}
+
+int main() {
+    int m;
+
+    scanf("%d", &m);
+
+    int a[m];
+
+    for (int i = 0; i < m; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    printf("%d", countZeroes(a, 0, m - 1));
+
+    return 0;
+}
+
+2-Majority Element
+
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    int candidate = a[0];
+    int count = 1;
+
+    for (int i = 1; i < n; i++) {
+        if (a[i] == candidate) {
+            count++;
+        } else {
+            count--;
+
+            if (count == 0) {
+                candidate = a[i];
+                count = 1;
+            }
+        }
+    }
+
+    printf("%d", candidate);
+
+    return 0;
+}
+
+
+3-Finding Floor Value
+
+
+#include <stdio.h>
+
+int findFloor(int a[], int low, int high, int x) {
+    if (low > high)
+        return -1;
+
+    int mid = (low + high) / 2;
+
+    if (a[mid] == x)
+        return a[mid];
+
+    if (a[mid] < x) {
+        int result = findFloor(a, mid + 1, high, x);
+
+        if (result == -1)
+            return a[mid];
+
+        return result;
+    }
+
+    return findFloor(a, low, mid - 1, x);
+}
+
+int main() {
+    int n, x;
+
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    scanf("%d", &x);
+
+    printf("%d", findFloor(a, 0, n - 1, x));
+
+    return 0;
+}
+
+
+
+4-Two Elements sum to x
+
+
+#include <stdio.h>
+
+int binarySearch(int a[], int low, int high, int key) {
+    if (low > high)
+        return -1;
+
+    int mid = (low + high) / 2;
+
+    if (a[mid] == key)
+        return mid;
+
+    if (a[mid] < key)
+        return binarySearch(a, mid + 1, high, key);
+
+    return binarySearch(a, low, mid - 1, key);
+}
+
+int main() {
+    int n, x;
+
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    scanf("%d", &x);
+
+    for (int i = 0; i < n; i++) {
+        int j = binarySearch(a, i + 1, n - 1, x - a[i]);
+
+        if (j != -1) {
+            printf("%d\n", a[i]);
+            printf("%d\n", a[j]);
+            return 0;
+        }
+    }
+
+    printf("No");
+
+    return 0;
+}
+
+
+
+5-Implementation of Quick Sort
+
+#include <stdio.h>
+
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++)
+        {
+            if (arr[j] < pivot)
+            {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        int p = i + 1;
+
+        quickSort(arr, low, p - 1);
+        quickSort(arr, p + 1, high);
+    }
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+
+    for (int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    quickSort(arr, 0, n - 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (i > 0)
+            printf(" ");
+        printf("%d", arr[i]);
+    }
+
+    return 0;
+}
+
+                                                                                WEEK 4
+
+
+1-Finding Duplicates-O(n^2) Time Complexity,O(1) Space Complexity
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                printf("%d", arr[i]);
+                return 0;
+            }
+        }
+    }
+
+    return 0;
+}
+
+
+2-Finding Duplicates-O(n) Time Complexity,O(1) Space Complexity
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                printf("%d", arr[i]);
+                return 0;
+            }
+        }
+    }
+
+    return 0;
+}
+
+3-Print Intersection of 2 sorted arrays-O(m*n)Time Complexity,O(1) Space Complexity
+#include <stdio.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        int n1, n2;
+        scanf("%d", &n1);
+
+        int a[n1];
+        for (int i = 0; i < n1; i++) {
+            scanf("%d", &a[i]);
+        }
+
+        scanf("%d", &n2);
+
+        int b[n2];
+        for (int i = 0; i < n2; i++) {
+            scanf("%d", &b[i]);
+        }
+
+        int i = 0, j = 0;
+        int first = 1;
+
+        while (i < n1 && j < n2) {
+            if (a[i] == b[j]) {
+                if (!first)
+                    printf(" ");
+                printf("%d", a[i]);
+                first = 0;
+                i++;
+                j++;
+            }
+            else if (a[i] < b[j]) {
+                i++;
+            }
+            else {
+                j++;
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+4-Print Intersection of 2 sorted arrays-O(m+n)Time Complexity,O(1) Space Complexity
+#include <stdio.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        int n1, n2;
+        scanf("%d", &n1);
+
+        int a[n1];
+        for (int i = 0; i < n1; i++)
+            scanf("%d", &a[i]);
+
+        scanf("%d", &n2);
+
+        int b[n2];
+        for (int i = 0; i < n2; i++)
+            scanf("%d", &b[i]);
+
+        int i = 0, j = 0;
+
+        while (i < n1 && j < n2) {
+            if (a[i] == b[j]) {
+                printf("%d ", a[i]);
+                i++;
+                j++;
+            }
+            else if (a[i] < b[j]) {
+                i++;
+            }
+            else {
+                j++;
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+5-Pair with Difference-O(n^2)Time Complexity,O(1) Space Complexity
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    scanf("%d", &k);
+
+    int i = 0, j = 1;
+
+    while (i < n && j < n) {
+        if (i == j) {
+            j++;
+        }
+        else if (a[j] - a[i] == k) {
+            printf("1");
+            return 0;
+        }
+        else if (a[j] - a[i] < k) {
+            j++;
+        }
+        else {
+            i++;
+        }
+    }
+
+    printf("0");
+
+    return 0;
+}
+
+
+6-Pair with Difference -O(n) Time Complexity,O(1) Space Complexity
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    scanf("%d", &k);
+
+    int i = 0, j = 1;
+
+    while (i < n && j < n) {
+        if (i == j) {
+            j++;
+        } else if (a[j] - a[i] == k) {
+            printf("1");
+            return 0;
+        } else if (a[j] - a[i] < k) {
+            j++;
+        } else {
+            i++;
+        }
+    }
+
+    printf("0");
+
+    return 0;
+}
+
+
+                                                WEEK 5
+
+1-DP-Playing with Numbers
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    long long ways[n + 1];
+
+    ways[0] = 1;
+
+    for (int i = 1; i <= n; i++) {
+        ways[i] = ways[i - 1];
+
+        if (i >= 3) {
+            ways[i] += ways[i - 3];
+        }
+    }
+
+    printf("%lld", ways[n]);
+
+    return 0;
+}
+
+
+2-DP-Playing with chessboard
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int a[n][n];
+    int dp[n][n];
+
+    // Read the chessboard
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    // Starting position
+    dp[0][0] = a[0][0];
+
+    // First row
+    for (int j = 1; j < n; j++) {
+        dp[0][j] = dp[0][j - 1] + a[0][j];
+    }
+
+    // First column
+    for (int i = 1; i < n; i++) {
+        dp[i][0] = dp[i - 1][0] + a[i][0];
+    }
+
+    // Fill remaining cells
+    for (int i = 1; i < n; i++) {
+        for (int j = 1; j < n; j++) {
+            if (dp[i - 1][j] > dp[i][j - 1])
+                dp[i][j] = dp[i - 1][j] + a[i][j];
+            else
+                dp[i][j] = dp[i][j - 1] + a[i][j];
+        }
+    }
+
+    // Maximum path value
+    printf("%d", dp[n - 1][n - 1]);
+
+    return 0;
+}
+
+
+3-DP-Longest Common Subsequence
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s1[1000], s2[1000];
+
+    scanf("%s", s1);
+    scanf("%s", s2);
+
+    int m = strlen(s1);
+    int n = strlen(s2);
+
+    int dp[m + 1][n + 1];
+
+    // Initialize first row and first column
+    for (int i = 0; i <= m; i++) {
+        dp[i][0] = 0;
+    }
+
+    for (int j = 0; j <= n; j++) {
+        dp[0][j] = 0;
+    }
+
+    // Fill DP table
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= n; j++) {
+
+            if (s1[i - 1] == s2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            }
+            else {
+                if (dp[i - 1][j] > dp[i][j - 1])
+                    dp[i][j] = dp[i - 1][j];
+                else
+                    dp[i][j] = dp[i][j - 1];
+            }
+        }
+    }
+
+    printf("%d", dp[m][n]);
+
+    return 0;
+}
+
+4-DP-Longest non-decreasing Subsequence
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int a[n];
+    int dp[n];
+
+    // Read the sequence
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        dp[i] = 1;
+    }
+
+    // Find Longest Non-decreasing Subsequence
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+
+            if (a[j] <= a[i] && dp[j] + 1 > dp[i]) {
+                dp[i] = dp[j] + 1;
+            }
+        }
+    }
+
+    // Find maximum length
+    int max = dp[0];
+
+    for (int i = 1; i < n; i++) {
+        if (dp[i] > max) {
+            max = dp[i];
+        }
+    }
+
+    printf("%d", max);
+
+    return 0;
+}
